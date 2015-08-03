@@ -219,6 +219,7 @@
     <script src="assets/handlebars-v3.0.3.js"></script>
 
     <script>
+	
         // add OpenStreetMap layer
         var layerOSM = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
@@ -285,7 +286,7 @@
 
         // initialize map
         var map = new L.Map('map', {
-            minZoom: 6,
+            minZoom: 7,
             maxZoom: 18,
             zoomControl: false
         });
@@ -336,7 +337,6 @@
                         if (layer_topo100.options.color == '#00FFFF') {
                             topo100.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
-                            //console.log("deselected " + feature.properties.name);
                         } else {
                             layer_topo100.setStyle({
                                 weight: 3,
@@ -344,9 +344,7 @@
                                 opacity: 1,
                                 fillOpacity: 0.1
                             });
-                            //console.log("selected " + feature.properties.name);
                             e.target.feature.properties.selected = true;
-                            //$('#selectedFeatures').text( feature.properties.name );
                         }
 
 
@@ -395,7 +393,6 @@
                         if (layer_topo50.options.color == '#00FFFF') {
                             topo50.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
-                            //console.log("deselected " + feature.properties.name);
                         } else {
                             layer_topo50.setStyle({
                                 weight: 3,
@@ -403,9 +400,7 @@
                                 opacity: 1,
                                 fillOpacity: 0.1
                             });
-                            //console.log("selected " + feature.properties.name);
                             e.target.feature.properties.selected = true;
-                            //$('#selectedFeatures').text( feature.properties.name );
                         }
 
                         getAllElements50();
@@ -451,7 +446,6 @@
                         if (layer_topo25.options.color == '#00FFFF') {
                             topo25.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
-                            //console.log("deselected " + feature.properties.name);
                         } else {
                             layer_topo25.setStyle({
                                 weight: 3,
@@ -459,9 +453,7 @@
                                 opacity: 1,
                                 fillOpacity: 0.1
                             });
-                            //console.log("selected " + feature.properties.name);
                             e.target.feature.properties.selected = true;
-                            //$('#selectedFeatures').text( feature.properties.name );
                         }
 
                         getAllElements25();
@@ -507,7 +499,6 @@
                         if (layer_topo10.options.color == '#00FFFF') {
                             topo10.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
-                            //console.log("deselected " + feature.properties.name);
                         } else {
                             layer_topo10.setStyle({
                                 weight: 3,
@@ -515,9 +506,7 @@
                                 opacity: 1,
                                 fillOpacity: 0.1
                             });
-                            //console.log("selected " + feature.properties.name);
                             e.target.feature.properties.selected = true;
-                            //$('#selectedFeatures').text( feature.properties.name );
                         }
 
                         getAllElements10();
@@ -551,25 +540,27 @@
         });
         border.addTo(map);
 
-
         map.setView([48.633,35.848], 7);
 
-
-        //var layerUA100000 = new L.tileLayer('https://googledrive.com/host/0B76pQANwdmHzR01ZR295UGwyTzQ/{z}/{x}/{y}.png', {
-        var layerUA100000 = new L.tileLayer('http://opengeo.intetics.com.ua/kartsotnya/UA100000/{z}/{x}/{y}.png', {
-            zIndex: 5
+        var layerUA100000 = new L.tileLayer('https://cartocdn-ashbu.global.ssl.fastly.net/kartsotnya/api/v1/map/485d07788c5ea9e784fd9c58fd866ec0:1438593954184.7/0/{z}/{x}/{y}.png', {
+            zIndex: 5,
+			minZoom: 7,
+			maxZoom: 12
         });
-        //var layerUA50000 = new L.tileLayer('https://googledrive.com/host/0B76pQANwdmHzX1JXUEJwNDZ5WGc/{z}/{x}/{y}.png', {
-        var layerUA50000 = new L.tileLayer('http://opengeo.intetics.com.ua/kartsotnya/UA50000/{z}/{x}/{y}.png', {
-            zIndex: 5
+        var layerUA50000 = new L.tileLayer('https://cartocdn-ashbu.global.ssl.fastly.net/kartsotnya/api/v1/map/d7fb42c9b14a9ca793a562237d0746bf:1438599197879.73/0/{z}/{x}/{y}.png', {
+            zIndex: 5,
+			minZoom: 8,
+			maxZoom: 13
         });
-        //var layerUA25000 = new L.tileLayer('https://googledrive.com/host/0B76pQANwdmHzQXBNSFk5VjBHRjQ/{z}/{x}/{y}.png', {
-        var layerUA25000 = new L.tileLayer('http://opengeo.intetics.com.ua/kartsotnya/UA25000/{z}/{x}/{y}.png', {
-            zIndex: 5
+        var layerUA25000 = new L.tileLayer('https://cartocdn-ashbu.global.ssl.fastly.net/kartsotnya/api/v1/map/bdbe56c7cd014cc6ad30964124de168f:1438599323461.69/0/{z}/{x}/{y}.png', {
+            zIndex: 5,
+			minZoom: 10,
+			maxZoom: 14
         });
-        //var layerUA10000 = new L.tileLayer('https://googledrive.com/host/0B76pQANwdmHzdjBxMnlCM2lKSjg/{z}/{x}/{y}.png', {
-        var layerUA10000 = new L.tileLayer('http://opengeo.intetics.com.ua/kartsotnya/UA10000/{z}/{x}/{y}.png', {
-            zIndex: 5
+        var layerUA10000 = new L.tileLayer('https://cartocdn-ashbu.global.ssl.fastly.net/kartsotnya/api/v1/map/e8f151f0caf097dae35afecba86ed6ab:1438599525614.02/0/{z}/{x}/{y}.png', {
+            zIndex: 5,
+			minZoom: 11,
+			maxZoom: 14
         });
 
         topo100.addTo(map);
@@ -680,8 +671,6 @@
         baseControl.addTo(map);
 
         layerOSM.addTo(map);
-		
-
 
 
         // remove All
@@ -697,8 +686,6 @@
                     selectedFeatureName.push(map._layers[ml].feature.properties.name);
                 }
             });
-            //console.log(selectedFeatureName);
-            //$('#sf100').text( selectedFeatureName );
             $('#sf100').text(selectedFeatureName.sort(),toString().replaceAll(',', ', '));
             getAllElements();
         };
@@ -710,8 +697,6 @@
                     selectedFeatureName.push(map._layers[ml].feature.properties.name);
                 }
             });
-            //console.log(selectedFeatureName);
-            //$('#sf50').text( selectedFeatureName );
             $('#sf50').text(selectedFeatureName.sort().toString().replaceAll(',', ', '));
             getAllElements();
         };
@@ -723,8 +708,6 @@
                     selectedFeatureName.push(map._layers[ml].feature.properties.name);
                 }
             });
-            //console.log(selectedFeatureName);
-            //$('#sf25').text( selectedFeatureName );
             $('#sf25').text(selectedFeatureName.sort().toString().replaceAll(',', ', '));
             getAllElements();
         };
@@ -736,8 +719,6 @@
                     selectedFeatureName.push(map._layers[ml].feature.properties.name);
                 }
             });
-            //console.log(selectedFeatureName);
-            //$('#sf10').text( selectedFeatureName );
             $('#sf10').text(selectedFeatureName.sort().toString().replaceAll(',', ', '));
             getAllElements();
         };
