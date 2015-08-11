@@ -3,6 +3,18 @@ The MIT License (MIT)
 Copyright (c) 2015 http://kartsotnya.ua <ukropmapa(at)gmail.com> (Безкоштовні картматеріали для військових : https://github.com/kartsotnya/kartsotnya.github.io)
 Copyright (c) 2015 Intetics Geo <geo(at)intetics.com> (Intetics Geo: http://intetics.com/geo)
 
+Libraries:
+Bootstrap https://github.com/twbs/bootstrap
+Font Awesome http://fortawesome.github.io/Font-Awesome/
+Leaflet.groupedlayercontrol https://github.com/ismyrnow/Leaflet.groupedlayercontrol
+Leaflet.hash https://github.com/mlevans/leaflet-hash
+Leaflet-control.geocoder https://github.com/perliedman/leaflet-control-geocoder
+Leaflet.Bing https://github.com/shramov/leaflet-plugins
+Bootbox.js https://github.com/makeusabrew/bootbox
+Handlebars http://handlebarsjs.com/
+jQuery https://jquery.com/
+Typeahead.js https://github.com/twitter/typeahead.js/
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
