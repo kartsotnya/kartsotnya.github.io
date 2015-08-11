@@ -4,6 +4,7 @@ Copyright (c) 2015 http://kartsotnya.ua <ukropmapa(at)gmail.com> (Безкошт
 Copyright (c) 2015 Intetics Geo <geo(at)intetics.com> (Intetics Geo: http://intetics.com/geo)
 
 Libraries:
+Leaflet https://github.com/Leaflet/Leaflet
 Bootstrap https://github.com/twbs/bootstrap
 Font Awesome http://fortawesome.github.io/Font-Awesome/
 Leaflet.groupedlayercontrol https://github.com/ismyrnow/Leaflet.groupedlayercontrol
