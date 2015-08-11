@@ -1,7 +1,7 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 http://kartsotnya.ua <ukropmapa(at)gmail.com> (Безкоштовні картматеріали для військових : https://github.com/kartsotnya/kartsotnya.github.io)
-Copyright (c) 2015 Intetics Geo <geo(at)intetics.com> (Intetics Geo: http://intetics.com/geo)
+Copyright (c) 2015 Kartsotnya <ukropmapa(at)gmail.com>
+Copyright (c) 2015 Intetics-Geo <geo(at)intetics.com>
 
 Libraries:
 Leaflet https://github.com/Leaflet/Leaflet
