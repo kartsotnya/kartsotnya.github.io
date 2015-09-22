@@ -6,4 +6,4 @@
 
 Телефон: +38-063-179-84-58
 
-&copy; 2015 http://kartsotnya.ua
+&copy; 2015 http://kartsotnya.com.ua
