@@ -10,7 +10,7 @@ Font Awesome http://fortawesome.github.io/Font-Awesome/
 Leaflet.groupedlayercontrol https://github.com/ismyrnow/Leaflet.groupedlayercontrol
 Leaflet.hash https://github.com/mlevans/leaflet-hash
 Leaflet-control.geocoder https://github.com/perliedman/leaflet-control-geocoder
-Leaflet.Bing https://github.com/shramov/leaflet-plugins
+Leaflet.Bing/Google/Yandex https://github.com/shramov/leaflet-plugins
 Bootbox.js https://github.com/makeusabrew/bootbox
 Handlebars http://handlebarsjs.com/
 jQuery https://jquery.com/

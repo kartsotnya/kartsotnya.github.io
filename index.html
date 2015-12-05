@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +13,7 @@
 
     <link rel="stylesheet" href="assets/bootstrap-3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/font-awesome-4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/leaflet-0.7.3/leaflet.css">
+    <link rel="stylesheet" href="assets/leaflet-0.7.7/leaflet.css">
     <link rel="stylesheet" href="assets/leaflet.groupedlayercontrol/leaflet.groupedlayercontrol.min.css">
     <link rel="stylesheet" href="assets/leaflet-control.geocoder/Control.Geocoder.css">
 
@@ -129,9 +128,7 @@
             }
         }
     </style>
-
 </head>
-
 <body>
     <div class="container">
 
@@ -145,9 +142,7 @@
                 <h5>Оберіть потрібні вам номенклатури, натискаючи по них курсором мишки. Повторне натискання скасовує виділення. При пошуку за номенклатурою першу літеру потрібно набирати латиницею - M, N, L. Після завершення вибору натисніть кнопку "Замовити" для відкриття форми замовлення. Поле форми з переліком номенклатур вже буде попередньо заповнене для вашої зручності.</h5>           
 			</div>
 		</div>
-		
 </br>	
-	
         <form class="navbar-form navbar" role="search" style="z-index: 10000; position: absolute;">
             <div class="form-group has-feedback">
                 <input id="searchbox" type="text" placeholder="Пошук за номенклатурою..." class="form-control" style="width: 275px; height: 28px;">
@@ -205,16 +200,16 @@
 
     </div>
 
-
     <script src="assets/jquery-1.11.3.min.js"></script>
     <script src="assets/bootstrap-3.3.2/js/bootstrap.min.js"></script>
-    <script src="assets/leaflet-0.7.3/leaflet.js"></script>
+    <script src="assets/leaflet-0.7.7/leaflet.js"></script>
     <script src="assets/leaflet.groupedlayercontrol/leaflet.groupedlayercontrol.min.js"></script>
     <script src="assets/bootbox.min.js"></script>
     <script src="assets/leaflet.hash/leaflet.hash.js"></script>
     <script src="assets/leaflet-control.geocoder/Control.Geocoder.js"></script>
     <script src="assets/google.js"></script>
     <script src="assets/bing.js"></script>
+    <script src="assets/yandex.js"></script>
     <script src="assets/typeahead.bundle.js"></script>
     <script src="assets/handlebars-v3.0.3.js"></script>
 
@@ -270,7 +265,6 @@
 				return quadKey.join('');
 			}
 		});		
-
 		
 		var layerBA = new BingLayer('http://t{s}.tiles.virtualearth.net/tiles/a{q}.jpeg?g=2732', {
 			maxZoom: 19,
@@ -280,10 +274,13 @@
 		});	
 		
         // Google layers
-        var layerGoogleRoadmap = new L.Google('ROADMAP');
+        var layerGoogle = new L.Google('ROADMAP');
         var layerGoogleSat = new L.Google('SATELLITE');
 
-
+		//Yandex Satellite
+		var layerYandexSat = new L.Yandex('sat');
+		var layerYandex = new L.Yandex('map');
+		
         // initialize map
         var map = new L.Map('map', {
             minZoom: 7,
@@ -302,8 +299,6 @@
             position: "bottomright"
         }).addTo(map);
 
-
-
         var topo100Search = [],
             topo50Search = [],
             topo25Search = [],
@@ -321,7 +316,6 @@
                 }
             },
             onEachFeature: function(feature, layer_topo100) {
-
                 topo100Search.push({
                     name: layer_topo100.feature.properties.name,
                     source: "topo100",
@@ -329,11 +323,9 @@
                     lat: layer_topo100.getBounds().getCenter().lat,
                     lng: layer_topo100.getBounds().getCenter().lng
                 });
-
                 layer_topo100.on({
                     click: function(e) {
                         var layer_topo100 = e.target;
-
                         if (layer_topo100.options.color == '#00FFFF') {
                             topo100.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
@@ -346,18 +338,12 @@
                             });
                             e.target.feature.properties.selected = true;
                         }
-
-
-
-
                         getAllElements100();
-
                         if (!L.Browser.ie && !L.Browser.opera) {
                             layer_topo100.bringToFront();
                         }
                     }
                 });
-
             }
         });
         $.getJSON("data/UA100000.geojson", function(data) {
@@ -377,7 +363,6 @@
                 }
             },
             onEachFeature: function(feature, layer_topo50) {
-
                 topo50Search.push({
                     name: layer_topo50.feature.properties.name,
                     source: "topo50",
@@ -385,11 +370,9 @@
                     lat: layer_topo50.getBounds().getCenter().lat,
                     lng: layer_topo50.getBounds().getCenter().lng
                 });
-
                 layer_topo50.on({
                     click: function(e) {
                         var layer_topo50 = e.target;
-
                         if (layer_topo50.options.color == '#00FFFF') {
                             topo50.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
@@ -402,15 +385,12 @@
                             });
                             e.target.feature.properties.selected = true;
                         }
-
                         getAllElements50();
-
                         if (!L.Browser.ie && !L.Browser.opera) {
                             layer_topo50.bringToFront();
                         }
                     }
                 });
-
             }
         });
         $.getJSON("data/UA50000.geojson", function(data) {
@@ -430,7 +410,6 @@
                 }
             },
             onEachFeature: function(feature, layer_topo25) {
-
                 topo25Search.push({
                     name: layer_topo25.feature.properties.name,
                     source: "topo25",
@@ -438,11 +417,9 @@
                     lat: layer_topo25.getBounds().getCenter().lat,
                     lng: layer_topo25.getBounds().getCenter().lng
                 });
-
                 layer_topo25.on({
                     click: function(e) {
                         var layer_topo25 = e.target;
-
                         if (layer_topo25.options.color == '#00FFFF') {
                             topo25.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
@@ -455,15 +432,12 @@
                             });
                             e.target.feature.properties.selected = true;
                         }
-
                         getAllElements25();
-
                         if (!L.Browser.ie && !L.Browser.opera) {
                             layer_topo25.bringToFront();
                         }
                     }
                 });
-
             }
         });
         $.getJSON("data/UA25000.geojson", function(data) {
@@ -483,7 +457,6 @@
                 }
             },
             onEachFeature: function(feature, layer_topo10) {
-
                 topo10Search.push({
                     name: layer_topo10.feature.properties.name,
                     source: "topo10",
@@ -491,11 +464,9 @@
                     lat: layer_topo10.getBounds().getCenter().lat,
                     lng: layer_topo10.getBounds().getCenter().lng
                 });
-
                 layer_topo10.on({
                     click: function(e) {
                         var layer_topo10 = e.target;
-
                         if (layer_topo10.options.color == '#00FFFF') {
                             topo10.resetStyle(e.target);
                             e.target.feature.properties.selected = false;
@@ -508,15 +479,12 @@
                             });
                             e.target.feature.properties.selected = true;
                         }
-
                         getAllElements10();
-
                         if (!L.Browser.ie && !L.Browser.opera) {
                             layer_topo10.bringToFront();
                         }
                     }
                 });
-
             }
         });
         $.getJSON("data/UA10000.geojson", function(data) {
@@ -618,7 +586,6 @@
             }
         });
 
-
         // add geocoder control
         var geocoder = L.Control.geocoder({
             position: "topleft",
@@ -629,16 +596,16 @@
 
         // Layer Control
         var baseLayers = {
-            "Google Roadmap": layerGoogleRoadmap,		
+            "Google": layerGoogle,		
+            "Yandex": layerYandex,		
 			"OpenStreetMap<br><div class='leaflet-control-layers-separator' style='margin-right: -10px;'>": layerOSM,			
 			"Bing Road": layerBR,
-	
-			
+
             "Bing Aerial": layerBA,				
             "Google Satellite": layerGoogleSat,
+			"Yandex Satellite":layerYandexSat,
 			"MapBox Imagery&nbsp&nbsp&nbsp&nbsp&nbsp": layerMapBoxImagery
         };
-
 		
         var overlayLayers = {
             "Номенклатурні рамки:": {
@@ -649,7 +616,6 @@
             }
         };
 
-
         /* Larger screens get expanded layer control and visible sidebar */
         if (document.body.clientWidth <= 767) {
             var isCollapsed = true;
@@ -658,10 +624,6 @@
         } else {
             var isCollapsed = false;
         };
-
-
-
-
 
         var baseControl = L.control.groupedLayers(baseLayers, null, {
             collapsed: isCollapsed, autoZIndex: false
@@ -680,8 +642,7 @@
         // remove All
         String.prototype.replaceAll = function(search, replace) {
             return this.split(search).join(replace);
-        }
-
+        };
 
         function getAllElements100() {
             var selectedFeatureName = [];
@@ -690,7 +651,7 @@
                     selectedFeatureName.push(map._layers[ml].feature.properties.name);
                 }
             });
-            $('#sf100').text(selectedFeatureName.sort(),toString().replaceAll(',', ', '));
+            $('#sf100').text(selectedFeatureName.sort().toString().replaceAll(',', ', '));
             getAllElements();
         };
 
@@ -728,7 +689,6 @@
         };
 
         function getAllElements() {
-
             $('#sfAll').text('');
             var s1 = $("#sf100").text();
             var s2 = $("#sf50").text();
@@ -749,14 +709,12 @@
 
             $('#sfAll').text(all);
 
-
             var count;
             if ($("#sfAll").text()) {
                 count = all.match(/[A-Z]/g).length;
             } else {
                 count = 0;
             }
-
 
             var count100;
             if ($("#sf100").text()) {
@@ -786,7 +744,6 @@
                 count10 = 0;
             }
 
-
             $('#sfAll').text($('#sfAll').text().toString().replaceAll(', ', ','));
             $('#sfAll').text($('#sfAll').text().toString().replaceAll(',', ', '));
 
@@ -806,7 +763,6 @@
                 window.open("https://docs.google.com/forms/d/1fwj2rOQlQt3besw2Jlwiz-ZHPhqUXa0MhoPe7yjNeso/viewform?entry.1655396950=" + $("#sfAll").text());
             }
         });
-
 
         $('#clearForm').on('click', function(e) {
             window.location.reload(); // page reload :(
@@ -1009,7 +965,6 @@
             $(".twitter-typeahead").css("position", "static");
             $(".twitter-typeahead").css("display", "block");
         });
-
 	
     </script>
 </body>
